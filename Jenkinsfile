@@ -3,18 +3,20 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                label 'windows'
+            }
             steps {
-                echo 'Building..'
+                iwr -useb https://chocolatey.org/install.ps1 | iex
+                choco install -y packer -version 1.1.3
             }
         }
         stage('Test') {
-            steps {
-                echo 'Testing..'
+            agent {
+                label 'windows'
             }
-        }
-        stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                .\test.ps1
             }
         }
     }
