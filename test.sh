@@ -16,6 +16,7 @@ sudo curl -L -o ${PACKER_VERSION}_linux_amd64.zip https://releases.hashicorp.com
 echo "Installing packer ${PACKER_VERSION} ..."
 sudo unzip ${PACKER_VERSION}_linux_amd64.zip
 sudo rm ${PACKER_VERSION}_linux_amd64.zip
+popd
 pushd /usr/bin
 sudo ln -s /opt/packer/* .
 popd
@@ -30,4 +31,8 @@ sudo apt-get update
 sudo apt-get install -y virtualbox-5.2 dkms
 
 echo "Run Packer build"
+echo "Show pwd"
+pwd
+echo "Show ls"
+ls
 packer build --only virtualbox-iso windows_2016.json
