@@ -7,7 +7,7 @@ pipeline {
                 label 'windows'
             }
             steps {
-                powershell "iex $(iwr -useb https://chocolatey.org/install.ps1) ; choco install -y packer -version 1.1.3 ; .\test.ps1"
+                powershell "iex \$(iwr -useb https://chocolatey.org/install.ps1) ; choco install -y packer -version 1.1.3 ; .\test.ps1"
             }
         }
         stage('Build Linux') {
