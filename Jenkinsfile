@@ -1,22 +1,25 @@
 pipeline {
-    agent none
+  agent none
 
-    stages {
-        stage('Build Windows') {
-            agent {
-                label 'windows'
-            }
-            steps {
-                powershell ". ./test.ps1"
-            }
+  stages {
+    stage('Test templates') {
+      parallel {
+        stage('Test on Windows') {
+          agent {
+            label 'windows'
+          }
+          steps {
+            powershell ". ./test.ps1"
+          }
         }
         stage('Build Linux') {
-            agent {
-                label 'linux'
-            }
-            steps {
-              sh "echo hello linux"
-            }
+          agent {
+            label 'linux'
+          }
+          steps {
+            sh "./test.sh"
+          }
         }
+      }
     }
 }
