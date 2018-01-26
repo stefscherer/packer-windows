@@ -42,4 +42,5 @@ Write-Host "Allow Packer http server"
 New-NetFirewallRule -DisplayName "Allow Packer" -Direction Inbound -Program "C:\ProgramData\chocolatey\lib\packer\tools\packer.exe" -RemoteAddress LocalSubnet -Action Allow
 
 Write-Output "Packer Build"
+$env:PACKER_LOG="1"
 packer.exe build --only=hyperv-iso windows_2016.json
