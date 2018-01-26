@@ -44,4 +44,4 @@ New-NetFirewallRule -DisplayName "Allow Packer" -Direction Inbound -Program "C:\
 
 Write-Output "Packer Build"
 # $env:PACKER_LOG="1"
-packer.exe build --only=hyperv-iso windows_2016.json
+packer.exe build --only=hyperv-iso --var enable_mac_spoofing=true windows_2016.json
