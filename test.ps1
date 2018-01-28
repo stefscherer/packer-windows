@@ -49,4 +49,8 @@ $env:PACKER_CACHE_DIR="D:/packer_cache"
 If (!(Test-Path $env:PACKER_CACHE_DIR)) {
   mkdir $env:PACKER_CACHE_DIR
 }
+$env:TMPDIR="D:/packer_temp"
+If (!(Test-Path $env:TMPDIR)) {
+  mkdir $env:TMPDIR
+}
 packer.exe build --only=hyperv-iso --var enable_mac_spoofing=true windows_2016.json
