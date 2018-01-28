@@ -6,20 +6,20 @@ pipeline {
       parallel {
         stage('Test on Windows') {
           agent {
-            label 'windows'
+            label 'packerwin'
           }
           steps {
             powershell ". ./test.ps1"
           }
         }
-        stage('Build Linux') {
-          agent {
-            label 'linux'
-          }
-          steps {
-            sh "./test.sh"
-          }
-        }
+      //  stage('Build Linux') {
+      //    agent {
+      //      label 'linux'
+      //    }
+      //    steps {
+      //      sh "./test.sh"
+      //    }
+      //  }
       }
     }
   }
