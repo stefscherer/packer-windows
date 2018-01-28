@@ -43,5 +43,10 @@ Write-Host "Allow Packer http server"
 New-NetFirewallRule -DisplayName "Allow Packer" -Direction Inbound -Program "C:\ProgramData\chocolatey\lib\packer\tools\packer.exe" -RemoteAddress LocalSubnet -Action Allow
 
 Write-Output "Packer Build"
-# $env:PACKER_LOG="1"
+$env:PACKER_LOG="1"
+# Use Azure temporary data disk for ISO cache
+$env:PACKER_CACHE_DIR="D:/packer_cache"
+If (!(Test-Path $env:PACKER_CACHE_DIR)) {
+  mkdir $env:PACKER_CACHE_DIR
+}
 packer.exe build --only=hyperv-iso --var enable_mac_spoofing=true windows_2016.json
