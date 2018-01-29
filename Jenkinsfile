@@ -9,7 +9,8 @@ pipeline {
             label 'packerwin'
           }
           steps {
-            powershell ". ./test.ps1"
+            // powershell ". ./test.ps1"
+            cmd "powershell -file ./test.ps1"
           }
         }
       //  stage('Build Linux') {
