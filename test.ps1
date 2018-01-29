@@ -40,5 +40,9 @@ $env:TMPDIR="D:/packer_temp"
 If (!(Test-Path $env:TMPDIR)) {
   mkdir $env:TMPDIR
 }
-# packer.exe build --only=hyperv-iso --var enable_mac_spoofing=true windows_2016.json
+$env:TEMP=$env:TMPDIR
+
+Write-Host "Building windows_2016.json"
 packer.exe build --only=hyperv-iso windows_2016.json
+Write-Host "Done with packer build"
+ls
