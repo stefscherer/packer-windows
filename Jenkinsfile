@@ -10,7 +10,7 @@ pipeline {
           }
           steps {
             // powershell ". ./test.ps1"
-            cmd "powershell -file ./test.ps1"
+            bat "powershell -file ./test.ps1"
           }
         }
       //  stage('Build Linux') {
