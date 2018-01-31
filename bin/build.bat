@@ -19,6 +19,12 @@
   set builder=virtualbox-iso
   set spec=virtualbox
 )
+@if "%BUILD:~-7%" == "_hyperv" (
+  set boxname=%BUILD:~0,-11%
+  set template=%BUILD:~0,-11%
+  set builder=hyperv-iso
+  set spec=hyperv
+)
 
 @if "%spec%x"=="x" (
   echo Wrong build parameter!
