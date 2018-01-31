@@ -10,6 +10,7 @@ pipeline {
             label 'packerwin'
           }
           steps {
+            checkout scm
             bat "dir"
             bat "build.bat windows_2016.json"
           }
@@ -20,6 +21,7 @@ pipeline {
 //            label 'packerwin'
 //          }
 //          steps {
+//            checkout scm
 //            bat "dir"
 //            bat "build.bat windows_2016_docker.json"
 //          }
@@ -30,6 +32,7 @@ pipeline {
 //            label 'packerwin'
 //          }
 //          steps {
+//            checkout scm
 //            bat "dir"
 //            bat "build.bat windows_10.json"
 //          }
