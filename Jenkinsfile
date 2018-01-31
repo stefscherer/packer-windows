@@ -10,7 +10,7 @@ pipeline {
           }
           steps {
             bat "if not exist .git git clone https://github.com/stefscherer/packer-windows ."
-            bat "bin\build.bat windows_10_hyperv"
+            bat "bin\\build.bat windows_10_hyperv"
             bat "dir windows_10_hyperv.box"
           }
         }
