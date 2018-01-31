@@ -10,8 +10,9 @@ pipeline {
           }
           steps {
             bat "dir"
-            checkout scm
+            bat "git clone https://github.com/stefscherer/packer-windows ."
             bat "packer build --only hyperv-iso windows_10.json"
+            bat "dir"
           }
         }
       }
