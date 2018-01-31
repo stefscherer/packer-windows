@@ -1,29 +1,15 @@
 @setlocal
-@set BUILD=%1
+@set JSON=%1
+@set spec=%2
+set builder=%spec%-iso
 
-@if "%BUILD:~-7%" == "_vmware" (
-  set boxname=%BUILD:~0,-7%
-  set template=%BUILD:~0,-7%
+@if "%JSON:~-5%" == ".json" (
+  set boxname=%JSON:~0,-5%
+  set template=%JSON:~0,-5%
+)
+
+@if "%spec:~-6%" == "vcloud" (
   set builder=vmware-iso
-  set spec=vmware
-)
-@if "%BUILD:~-7%" == "_vcloud" (
-  set boxname=%BUILD:~0,-7%
-  set template=%BUILD%
-  set builder=vmware-iso
-  set spec=vcloud
-)
-@if "%BUILD:~-11%" == "_virtualbox" (
-  set boxname=%BUILD:~0,-11%
-  set template=%BUILD:~0,-11%
-  set builder=virtualbox-iso
-  set spec=virtualbox
-)
-@if "%BUILD:~-7%" == "_hyperv" (
-  set boxname=%BUILD:~0,-11%
-  set template=%BUILD:~0,-11%
-  set builder=hyperv-iso
-  set spec=hyperv
 )
 
 @if "%spec%x"=="x" (
