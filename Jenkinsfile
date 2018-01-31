@@ -2,10 +2,10 @@ pipeline {
   agent none
 
   stages {
-    stage('Test templates') {
+    stage('Packer build') {
       parallel {
 
-        stage('Packer build Windows Server 2016 Hyper-V') {
+        stage('windows_2016 hyperv') {
           agent {
             label 'packerwin'
           }
@@ -14,7 +14,7 @@ pipeline {
           }
         }
 
-        stage('Packer build Windows Server 2016 and Docker Hyper-V') {
+        stage('windows_2016_docker hyperv') {
           agent {
             label 'packerwin'
           }
@@ -23,7 +23,7 @@ pipeline {
           }
         }
 
-        stage('Packer build Windows 10 Hyper-V') {
+        stage('windows_10 hyperv') {
           agent {
             label 'packerwin'
           }
