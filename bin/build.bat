@@ -12,17 +12,17 @@ set builder=%spec%-iso
   set builder=vmware-iso
 )
 
-@if "%spec%x"=="x" (
-  echo Wrong build parameter!
-  goto :EOF
-)
-
 @echo.
 @echo boxname = %boxname%
 @echo template = %template%
 @echo builder = %builder%
 @echo spec = %spec%
 @echo.
+
+@if "%spec%x"=="x" (
+  echo Wrong build parameter!
+  goto :EOF
+)
 
 if exist output-%builder% (
   rmdir /S /Q output-%builder%
