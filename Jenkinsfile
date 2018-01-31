@@ -1,26 +1,19 @@
-stage('Build') {
-  parallel windows_2016: {
-    node('packerwin') {
-      checkout scm
-      bat "dir"
-      bat "build.bat windows_2016.json"
-      bat "dir"
-    }
-  },
-  windows_2016_docker: {
-    node('packerwin') {
-      checkout scm
-      bat "dir"
-      bat "build.bat windows_2016_docker.json"
-      bat "dir"
-    }
-  },
-  windows_10: {
-    node('packerwin') {
-      checkout scm
-      bat "dir"
-      bat "build.bat windows_10.json"
-      bat "dir"
+pipeline {
+  agent none
+
+  stages {
+    stage('Test templates') {
+      parallel {
+        stage('Test on Windows') {
+          agent {
+            label 'packerwin'
+          }
+          steps {
+            bat "dir"
+            bat "packer build --only hyperv-iso windows_10.json"
+          }
+        }
+      }
     }
   }
 }
