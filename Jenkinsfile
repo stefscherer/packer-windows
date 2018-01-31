@@ -1,22 +1,19 @@
 pipeline {
-  agent { label 'packerwin' }
+  agent none
 
   stages {
-
-    stage('Checkout') {
-      steps {
-        checkout scm
-        bat "dir"
+    stage('Test templates') {
+      parallel {
+        stage('Test on Windows') {
+          agent {
+            label 'packerwin'
+          }
+          steps {
+            checkout scm
+            bat "packer build --only hyperv-iso windows_10.json"
+          }
+        }
       }
     }
-
-    stage('Build') {
-      steps {
-        bat "dir"
-        bat "packer build --only hyperv-iso windows_10.json"
-        bat "dir"
-      }
-    }
-
   }
 }
