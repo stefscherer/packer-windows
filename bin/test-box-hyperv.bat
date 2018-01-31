@@ -1,5 +1,5 @@
 rem 
-rem bin\test-box-hyperv.bat ubuntu1204_hyperv.box windows_10
+rem bin\test-box-hyperv.bat windows_10_hyperv.box windows_10
 set quick=0
 
 if "%1x"=="--quickx" (
@@ -18,7 +18,7 @@ if exist %tmp_path% rmdir /s /q %tmp_path%
 
 if %quick%==1 goto :do_test
 
-rem vagrant plugin install vagrant-serverspec
+vagrant plugin install vagrant-serverspec
 
 vagrant box remove %box_name% --provider=%vagrant_provider%
 vagrant box add %box_name% %box_path%
