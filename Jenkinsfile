@@ -10,8 +10,9 @@ pipeline {
           }
           steps {
             bat "if not exist .git git clone https://github.com/stefscherer/packer-windows ."
-            bat "bin\\build.bat windows_10.json hyperv"
+            bat "packer build --only hyperv-iso windows_10.json"
             bat "dir windows_10_hyperv.box"
+            bat "bin\\test-box-hyperv.bat windows_10_hyperv.box windows_10"
           }
         }
       }
