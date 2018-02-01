@@ -66,7 +66,7 @@ echo Vagrant.configure('2') do ^|config^| >Vagrantfile
 echo   config.vm.define :"tst" do ^|tst^| >>Vagrantfile
 echo     tst.vm.box = "%box_name%" >>Vagrantfile
 echo     tst.vm.hostname = "tst"
-echo     tst.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: ".git/" >>Vagrantfile
+echo     config.vm.synced_folder ".", "/vagrant", disabled: true >>Vagrantfile
 echo     tst.vm.provision :serverspec do ^|spec^| >>Vagrantfile
 echo       spec.pattern = '../test/*_%box_provider%.rb' >>Vagrantfile
 echo     end >>Vagrantfile

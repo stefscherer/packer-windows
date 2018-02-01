@@ -7,12 +7,6 @@ describe 'box' do
     end
   end
 
-  # this tests if rsync (or at least the shared folder) works from bin/test-box-vcloud.bat
-  describe file('c:/vagrant/testdir/testfile.txt') do
-    it { should be_file }
-    it { should contain "Works" }
-  end
-
   # check SSH is not installed
   describe service('OpenSSH Server') do
     it { should_not be_installed  }
